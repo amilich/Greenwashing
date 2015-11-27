@@ -75,8 +75,11 @@ def wash_file():
         degree = "very" 
     elif len(reasons) > 0: 
         degree = "fairly"
-    print reasons 
-    print txt
+    try: 
+        print reasons 
+        print txt
+    except: 
+        print 'printing failed' # ... 
     return render_template('gw.html', greenwash_degree = degree, reasons=reasons, img_src="uploads/" + my_path)
 
 
