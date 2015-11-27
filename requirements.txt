@@ -35,7 +35,7 @@ rsa==3.1.4
 simplejson==3.7.3
 six==1.9.0
 SQLAlchemy==1.0.9
-stevedore==1.6.0
+stevedore==1.6.0 
 topia.termextract==1.1.0
 uritemplate==0.6
 virtualenvwrapper==4.6.0
