@@ -71,11 +71,11 @@ def wash_file():
         if ('plant') in txt.lower() and 'plastic' in txt.lower(): 
             reasons.append("This is still a lot of plastic. It is clearly the lesser of two evils - it may be better to skip this.")
     
-        degree = "not"
+        degree = "This appears to not be greenwashed, or we could not read the packaging well enough."
         if len(reasons) > 3:
-            degree = "very" 
+            degree = "This appears to be very greenwashed." 
         elif len(reasons) > 0: 
-            degree = "fairly"
+            degree = "This appears to be fairly greenwashed."
         try: 
             print str(reasons) 
             print str(txt)
