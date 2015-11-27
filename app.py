@@ -43,19 +43,41 @@ def wash_file():
         print("No OCR tool found")
         sys.exit(1)
     tool = tools[0]
-    print("Will use tool '%s'" % (tool.get_name()))
     langs = tool.get_available_languages()
     lang = langs[0]
     my_path = session_str.split("\'")[1].split("\'")[0]
-    print my_path
     txt = tool.image_to_string(
         Image.open("uploads/" + my_path),
         lang=lang,
         builder=pyocr.builders.TextBuilder()
     )
     session['product_text'] = txt
+    reasons = []
+    if ('natural') in txt.lower(): 
+        reasons.append("The term 'natural' is vague and unregulated. You should do more research.")
+    if ('pure') in txt.lower(): 
+        reasons.append("The term 'pure' is vague and unregulated. You should do more research.")
+    if ('healthful') in txt.lower(): 
+        reasons.append("The term 'healthful' is vague and unregulated. You should do more research.")
+    if ('simple') in txt.lower(): 
+        reasons.append("The term 'simple' is vague and unregulated. You should do more research.")
+    if ('cfc') in txt.lower(): 
+        reasons.append("CFC free is an irrelevant term. CFCs are illegal.")
+    if ('better') in txt.lower(): 
+        reasons.append("The word 'better' is extremely vague. Be careful.")
+    if ('earth') in txt.lower(): 
+        reasons.append("Be wary of excessively green packaging and unclear claims. Does this protect the Earth?")
+    if ('plant') in txt.lower() and 'plastic' in txt.lower(): 
+        reasons.append("This is still a lot of plastic. It is clearly the lesser of two evils - it may be better to skip this.")
 
-    return txt
+    degree = "not"
+    if len(reasons) > 3:
+        degree = "very" 
+    elif len(reasons) > 0: 
+        degree = "fairly"
+    print reasons 
+    print txt
+    return render_template('gw.html', greenwash_degree = degree, reasons=reasons, img_src="uploads/" + my_path)
 
 
 if __name__ == '__main__':

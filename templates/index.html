@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Greenwashed?</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/grayscale.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <script src="/static/js/dropzone.js"></script>
+    <link rel="stylesheet" href="/static/css/dropzone.css">
+    <link rel="stylesheet" href="/static/css/newstyle.css">
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Greenwashing</h1>
+                        <p class="intro-text" style="color:white;">A simple tool to see if you're being tricked by packaging.</p>
+                        <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Identifying Greenwashing</h2>
+                <p>We found five major criteria that often identify greenwashing:</p>
+                <div class="container" style="text-align: left;">
+                    <li><b>Lesser of two evils.</b><i> Consider whether the product category is environmentally destructive.</i></li>
+                    <li><b>Vague claims.</b><i> Do you believe what the packaging says?</i></li>
+                    <li><b>Irrelevance.</b><i> CFC free? That's banned for all products.</i></li>
+                    <li><b>Fibbing.</b><i> Companies have been known to lie.</i></li>
+                    <li><b>Deceptively green packaging.</b><i> During interviews, consumers pointed out how simple, green packaging makes an impression.</i></li>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>About Greenwashing</h2>
+                    <p>Put simply, greenwashing is marketing aimed at taking advantage of a consumer’s lack of knowledge about a particular company to engender a false sense of complacency regarding environmental consciousness. </p>
+                </div>
+            </div>
+            <br>
+            <div class="container" style="border-radius:5px; width:1000px;height:500px">
+                <form action="/upload" style="background-color:#009933;" class="dropzone dz-clickable" id="my-dropzone" method="post" enctype="multipart/form-data">
+                    <div class="dz-message" data-dz-message style="color:black;"><span>Upload an image!</span></div>            
+                </form>
+                <br>        
+                <a href="wash"><button type="submit" class="btn btn-info" id="submit-all">Submit</button></a>
+            </div>
+        </div>
+    </section>
+
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+    <script src="/static/js/grayscale.js"></script>
+
+</body>
+
+</html>
