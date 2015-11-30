@@ -6,6 +6,12 @@ import sys
 import pyocr
 import pyocr.builders
 
+"""
+    Earthsys 41N Final Project
+
+    Andrew M. 
+"""
+
 app = Flask(__name__)
 app.secret_key = 'xbf\xcb7\x0bv\xcf\xc0N\xe1\x86\x98g9\xfei\xdc\xab\xc6\x05\xff%\xd3\xdf'
 app.config['UPLOAD_FOLDER'] = 'uploads/'
@@ -69,13 +75,13 @@ def wash_file():
         if ('earth') in txt.lower(): 
             reasons.append("Be wary of excessively green packaging and unclear claims. Does this protect the Earth?")
         if ('plant') in txt.lower() and 'plastic' in txt.lower(): 
-            reasons.append("This is still a lot of plastic. It is clearly the lesser of two evils - it may be better to skip this.")
+            reasons.append("'Plant bottle' still means plastic. This is the lesser of two evils - it may be better to skip a plastic water bottle.")
     
         degree = "This appears to not be greenwashed, or we could not read the packaging well enough."
         if len(reasons) > 3:
             degree = "This appears to be very greenwashed." 
         elif len(reasons) > 0: 
-            degree = "This appears to be fairly greenwashed."
+            degree = "This appears to be greenwashed."
         try: 
             print str(reasons) 
             print str(txt)
