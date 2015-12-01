@@ -60,12 +60,27 @@
         {% endfor %}
     </div>
     <br>
+    {% if fiji: %}
+    <div class="container">
+    It looks like you're buying a product from <b>Fiji</b>. Did you know: 
+    <br><br>
+    <li>The plastic used in this bottle was first shipped from Asia and transported again to stores across the world?</li>
+    <br>
+    <li>Fiji has been sued in the past for making false environmental claims. Be wary of greenwashing.</li>
+    <br>
+    <li>Fiji has also lied about being a carbon-negative company. In 2007, they emitted over 85,000 tons of CO2.</li>
+    <br>
+    </div>
+    {% endif %}
+    <br>
     <div class="container">
         <center>
             <h1 style="color:black;">
                 Regulated standards: 
             </h1>
             <img src="/static/img/reg.png" width="700px">
+            <br>
+            <img src="/static/img/reg1.png" width="700px">
         </center>
     </div>
 

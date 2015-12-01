@@ -18,6 +18,8 @@ app.config['UPLOAD_FOLDER'] = 'uploads/'
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg', 'gif'])
 current_file = "no_name"
 
+# see http://flask.pocoo.org/docs/0.10/patterns/fileuploads/ for file uploading. 
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
@@ -60,6 +62,7 @@ def wash_file():
         )
         session['product_text'] = txt
         reasons = []
+        fiji = False 
         if ('natural') in txt.lower(): 
             reasons.append("The term 'natural' is vague and unregulated. You should do more research.")
         if ('pure') in txt.lower(): 
@@ -74,6 +77,7 @@ def wash_file():
             reasons.append("The word 'better' is extremely vague. Be careful.")
         if ('earth') in txt.lower(): 
             reasons.append("Be wary of excessively green packaging and unclear claims. Does this protect the Earth?")
+            fiji = True 
         if ('plant') in txt.lower() and 'plastic' in txt.lower(): 
             reasons.append("'Plant bottle' still means plastic. This is the lesser of two evils - it may be better to skip a plastic water bottle.")
     
@@ -87,12 +91,12 @@ def wash_file():
             print str(txt)
         except: 
             print 'printing failed' # ... 
-        return render_template('gw.html', greenwash_degree = degree, reasons=reasons, img_src="uploads/" + my_path)
+        return render_template('gw.html', greenwash_degree = degree, reasons=reasons, img_src="uploads/" + my_path, fiji=fiji)
     except: 
         return "Error occurred. Please return home."
 
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.debug = False
+    app.debug = True
     app.run(host='0.0.0.0', port=port)

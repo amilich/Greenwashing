@@ -1,0 +1,27 @@
+t: Vague
+
+“active naturals"
+"better for the environment"
+"plant bottle" 
+“mild as water” 
+“soothing oatmeal” 
+"pure and natural"
+"protects the environment"
+"saving the earth"
+"protecs the earth"
+"pure"
+"natural"
+"doctor recommended"
+"made with renewable energy" 
+"clean coal"
+"natural ingredients"
+"better for the earth"
+"protecting natural habitats"
+"certified natural" 
+"better for the environment"
+"strive to maximize recycled content"
+"sustainable practices"
+"certified to protect the environment"
+
+t: Irrelevant
+"CFC-free"
