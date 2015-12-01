@@ -24,10 +24,16 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
 
+"""
+    Show homepage 
+"""
 @app.route('/')
 def index():
     return render_template('index.html')
 
+"""
+    Upload file, set path to current file used. 
+"""
 @app.route('/upload', methods=['POST'])
 def upload():
     file = request.files['file']
@@ -39,10 +45,16 @@ def upload():
         return render_template("success.html")
     return render_template("fail.html")
 
+"""
+    Display the file. 
+"""
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
 
+"""
+    Determine whether image is greenwashed. 
+"""
 @app.route('/wash')
 def wash_file():
     try: 
