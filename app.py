@@ -110,7 +110,7 @@ def wash_file():
 
         if ('purity you can taste') in txt.lower(): 
             degree = "This appears to be greenwashed."
-            theInfo = "It appears you are buying SmartWater. Remember, this is the lesser of two evils. It is still made in a 70% petroleum plastic bottle and shipped across the world. "
+            theInfo = "It appears you are buying SmartWater. Remember, this is the lesser of two evils. It is still made in a 70% petroleum plastic bottle and shipped across the world. <br> Also, Coca Cola, the maker of Smart Water, has created the 'Plant Bottle' greenwashing campaign. In reality, all bottles are still approximately 70% petroleum products."
         if ('urelyinspired') in txt.lower(): 
             degree = "This appears to be greenwashed."
             theInfo = "What does purely inspired mean? It is vague and unregulated. Furthermore, be wary of the term \"100% plant based.\""
