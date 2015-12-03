@@ -72,9 +72,12 @@ def wash_file():
             lang=lang,
             builder=pyocr.builders.TextBuilder()
         )
+        txt = txt.encode('utf-8').strip()
         session['product_text'] = txt
         reasons = []
         fiji = False 
+        huggies = False 
+        theInfo = ""
         if ('natural') in txt.lower(): 
             reasons.append("The term 'natural' is vague and unregulated. You should do more research.")
         if ('pure') in txt.lower(): 
@@ -89,23 +92,40 @@ def wash_file():
             reasons.append("The word 'better' is extremely vague. Be careful.")
         if ('earth') in txt.lower(): 
             reasons.append("Be wary of excessively green packaging and unclear claims. Does this protect the Earth?")
-            fiji = True 
+            theInfo = "It looks like you're buying a product from <b>Fiji</b>. Did you know: <br><br><li>The plastic used in this bottle was first shipped from Asia and transported again to stores across the world?</li><br><li>Fiji has been sued in the past for making false environmental claims. Be wary of greenwashing.</li><br><li>Fiji has also lied about being a carbon-negative company. In 2007, they emitted over 85,000 tons of CO2.</li><br>"
+            # fiji = True 
         if ('plant') in txt.lower() and 'plastic' in txt.lower(): 
             reasons.append("'Plant bottle' still means plastic. This is the lesser of two evils - it may be better to skip a plastic water bottle.")
-    
+        if ('gg|e') in txt.lower(): 
+            print 'ggie'
+            huggies = True 
+            theInfo = "It appears you are buying Huggies diapers. Remember, 'pure', and 'natural' are unregulated. Diapers will still end up in landfills. "
+
         degree = "This appears to not be greenwashed, or we could not read the packaging well enough."
         if len(reasons) > 3:
             degree = "This appears to be very greenwashed." 
         elif len(reasons) > 0: 
             degree = "This appears to be greenwashed."
+        print txt
+
+        if ('purity you can taste') in txt.lower(): 
+            degree = "This appears to be greenwashed."
+            theInfo = "It appears you are buying SmartWater. Remember, this is the lesser of two evils. It is still made in a 70% petroleum plastic bottle and shipped across the world. "
+        if ('urelyinspired') in txt.lower(): 
+            degree = "This appears to be greenwashed."
+            theInfo = "What does purely inspired mean? It is vague and unregulated. Furthermore, be wary of the term \"100% plant based.\""
+
         try: 
             print str(reasons) 
-            print str(txt)
         except: 
             print 'printing failed' # ... 
-        return render_template('gw.html', greenwash_degree = degree, reasons=reasons, img_src="uploads/" + my_path, fiji=fiji)
-    except: 
-        return "Error occurred. Please return home."
+        printStuff = False 
+        if len(theInfo) > 0: 
+            print 'printing info'
+            printStuff = True
+        return render_template('gw.html', greenwash_degree = degree, reasons=reasons, img_src="uploads/" + my_path, theInfo=theInfo, printStuff=printStuff)
+    except Exception, e: 
+        return "Error occurred. Please return home. " + str(e)
 
 
 if __name__ == '__main__':

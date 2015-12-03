@@ -1,3 +1,4 @@
+import unicodedata
 from PIL import Image
 import sys
 
@@ -15,9 +16,9 @@ langs = tool.get_available_languages()
 lang = langs[0]
 
 txt = tool.image_to_string(
-    Image.open('do.jpg'),
+    Image.open('fiji.jpg'),
     lang=lang,
     builder=pyocr.builders.TextBuilder()
 )
 
-print txt 
+print txt
