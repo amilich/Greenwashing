@@ -18,7 +18,7 @@ app.config['UPLOAD_FOLDER'] = 'uploads/'
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg', 'gif'])
 current_file = "no_name"
 
-# see http://flask.pocoo.org/docs/0.10/patterns/fileuploads/ for file uploading. 
+# Uploading credit: see http://flask.pocoo.org/docs/0.10/patterns/fileuploads/ for file uploading. 
 
 def allowed_file(filename):
     return '.' in filename and \
